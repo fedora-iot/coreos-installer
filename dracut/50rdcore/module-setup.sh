@@ -10,6 +10,10 @@ install_and_enable_unit() {
 }
 
 install() {
+    inst_multiple gpg
+    inst_multiple gpg-agent
+    inst_multiple gpg-connect-agent
+
     inst_simple "$moddir/rdcore" "/usr/bin/rdcore"
 
     inst_simple "$moddir/coreos-installer" "/usr/bin/coreos-installer"

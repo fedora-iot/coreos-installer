@@ -87,6 +87,7 @@ fi
 
 # Other args that should just be copied over
 copy_arg coreos.inst.image_url       --image-url
+copy_arg coreos.inst.image_file      --image-file
 copy_arg coreos.inst.platform_id     --platform
 copy_arg coreos.inst.stream          --stream
 copy_arg coreos.inst.save_partlabel  --save-partlabel
