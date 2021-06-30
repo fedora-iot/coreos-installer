@@ -979,7 +979,7 @@ pub fn udev_settle() -> Result<()> {
     // udevd hasn't yet received updates from the kernel, settle will return
     // immediately, and lsblk won't pick up partition labels.  Try to sleep
     // our way out of this.
-    sleep(Duration::from_millis(200));
+    sleep(Duration::from_millis(500));
 
     runcmd!("udevadm", "settle")?;
     Ok(())
