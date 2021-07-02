@@ -14,6 +14,48 @@ install() {
     inst_multiple gpg-agent
     inst_multiple gpg-connect-agent
 
+     inst_multiple \
+        realpath \
+        basename   \
+        blkid      \
+        cat        \
+        dirname    \
+        findmnt    \
+        growpart   \
+        realpath   \
+        resize2fs  \
+        tail       \
+        tune2fs    \
+        touch      \
+        xfs_admin  \
+        xfs_growfs \
+        wc         \
+        lsblk      \
+        wipefs
+
+    inst_multiple \
+        awk       \
+        cat       \
+        dd        \
+        grep      \
+        mktemp    \
+        partx     \
+        rm        \
+        sed       \
+        sfdisk    \
+        sgdisk    \
+        find
+        
+    inst_multiple -o \
+        clevis-encrypt-sss \
+        clevis-encrypt-tang \
+        clevis-encrypt-tpm2 \
+        clevis-luks-bind \
+        clevis-luks-common-functions \
+        clevis-luks-unlock \
+        pwmake \
+        tpm2_create
+
     inst_simple "$moddir/rdcore" "/usr/bin/rdcore"
 
     inst_simple "$moddir/coreos-installer" "/usr/bin/coreos-installer"
@@ -33,19 +75,8 @@ install() {
     install_and_enable_unit "coreos-installer-reboot.service" \
         "default.target" 
 
-#    install_and_enable_unit "coreos-installer-noreboot.service" \
-#        "basic.target" 
-#    inst_simple "$moddir/coreos-installer-reboot.service" \
-#        "$systemdsystemunitdir/coreos-installer-reboot.service"
-#    inst_simple "$moddir/coreos-installer-noreboot.service" \
-#        "$systemdsystemunitdir/coreos-installer-noreboot.service"
-#
-#    inst_simple "$moddir/coreos-installer.target" \
-#        "$systemdsystemunitdir/coreos-installer.target"
-#
-#    inst_simple "$moddir/coreos-installer-pre.target" \
-#        "$systemdsystemunitdir/coreos-installer-pre.target"
-#
-#    inst_simple "$moddir/coreos-installer-post.target" \
-#        "$systemdsystemunitdir/coreos-installer-post.target"
+    install_and_enable_unit "growfs.service" \
+        "default.target"
+    inst_script "$moddir/growfs" \
+        /usr/sbin/growfs
 }

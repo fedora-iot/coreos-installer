@@ -1,6 +1,5 @@
 [Unit]
 Description=Reboot after CoreOS Installer
-#Requires=coreos-installer.target
 After=coreos-installer.service
 OnFailure=emergency.target
 OnFailureJobMode=replace-irreversibly
