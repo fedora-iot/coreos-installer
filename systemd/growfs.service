@@ -5,7 +5,6 @@ DefaultDependencies=false
 After=coreos-installer.service
 Before=coreos-installer-reboot.service
 Requires=dev-disk-by\x2dlabel-root.device
-After=dev-disk-by\x2dlabel-root.device
 
 [Service]
 Type=oneshot
