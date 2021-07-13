@@ -39,6 +39,11 @@ karg_bool() {
     esac
 }
 
+# if we're not running in dracut, skip
+if [ -z "$(karg edge.liveiso)" ]; then
+    exit 0
+fi
+
 if [ -n "$(karg coreos.inst.install_dev)" ]; then
 #    ln -sf "/usr/lib/systemd/system/coreos-installer-post.target" \
 #        "${UNIT_DIR}/basic.target"
