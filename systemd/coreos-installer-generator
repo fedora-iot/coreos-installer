@@ -39,11 +39,6 @@ karg_bool() {
     esac
 }
 
-# if we're not running in dracut, skip
-if [ -z "$(karg edge.liveiso)" ]; then
-    exit 0
-fi
-
 if [ -n "$(karg coreos.inst.install_dev)" ]; then
 #    ln -sf "/usr/lib/systemd/system/coreos-installer-post.target" \
 #        "${UNIT_DIR}/basic.target"
@@ -52,6 +47,11 @@ if [ -n "$(karg coreos.inst.install_dev)" ]; then
     if ! karg_bool coreos.inst.skip_reboot; then
         > /run/coreos-installer-reboot
     fi
+fi
+
+# if we're not running in dracut, skip
+if [ -z "$(karg edge.liveiso)" ]; then
+    exit 0
 fi
 
 add_requires run-media-iso.mount default.target
